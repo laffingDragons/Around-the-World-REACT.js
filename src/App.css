@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  background-color: #222;
+  color: white;
 }
 
 .App-logo {
@@ -8,11 +9,10 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
- 
+  text-align: center;
+  margin: auto;
+  margin-top: 150px; 
+  margin-bottom: 40px; 
 }
 
 .App-title {
@@ -24,6 +24,69 @@
   font-size: large;
 }
 
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: block;
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  color: #222222;
+  text-align: center;
+  font-size: 1.8em;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.card2 {
+  background: #fff;
+  border-radius: 2px;
+  display: block;
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  height: 500px;
+  color: #222222;
+  text-align: center;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.card-glow{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px #61DAFB; */
+}
+/* .card-glow :hover{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px #61DAFB;
+} */
+.overFlow{
+  white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.country-flag{
+
+  width: 100%;
+  height: auto;
+
+}
+
+@media only screen and (max-width: 766px) {
+  .card2 {
+    background: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    margin: 1rem;
+    position: relative;
+    width: 100%;
+    height: auto;
+    color: #222222;
+    text-align: center;
+    font-size: 0.8em;
+    cursor: pointer;
+  }
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
