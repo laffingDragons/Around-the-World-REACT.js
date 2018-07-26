@@ -25,3 +25,5 @@ export const allRegions = [
 export const fetchCountries = `https://restcountries.eu/rest/v2/region/`;
 
 export const CURRENT_COUNTRY = 'CURRENT_COUNTRY';
+
+export const REGION_NAME = 'REGION_NAME';

@@ -5,8 +5,19 @@ import './header.css';
 
 import {allRegions} from './service'
 import Region from './region';
+import Country from "./country";
 import store from "./route/configureStore";
 import { Provider } from 'react-redux'; //tm
+import  PropTypes  from "prop-types";
+import * as appAction from './store/action/appAction';
+import { selectedRegion } from "./store/action/appAction";
+import { connect } from "react-redux";
+import appReducer from './store/reducer/appReducer';
+
+const propTypes = {
+
+  appAction: PropTypes.object
+}
 
 
 class Header extends Component {
@@ -20,8 +31,10 @@ class Header extends Component {
   }
   
   param(name,index){
-    const {countryName,currentPageIndex} = this.state;
-    this.setState ({ countryName: name,currentPageIndex:index})
+    let { param } = this.props;
+    this.props.selectedRegion(name);
+    // const {countryName,currentPageIndex} = this.state;
+    this.setState ({ countryName: name, currentPageIndex:index})
   }
   
   render() {
@@ -41,6 +54,10 @@ class Header extends Component {
            currentPageIndex == 1
           ?
           <Region countryName={countryName} param={this.param}/>
+           : 
+           currentPageIndex == 3
+           ?
+           <Country param={this.param} countryName={countryName}/>
            : 
            <div className="row">
            {
@@ -64,15 +81,16 @@ class Header extends Component {
         </div>
         </Provider>
       );
-      
-       
-    
-  
-    
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  name: state.appReducer.region
+})
+
+export default connect(mapStateToProps,{selectedRegion})(Header)
+
+
 
 
 
