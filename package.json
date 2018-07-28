@@ -2,6 +2,11 @@
   "name": "machine-works",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://laffingDragons/Arounld-the-World-REACT.js",
+  "devDependencies": {
+    "gh-pages": "^1.0.0",
+    "react-script": "^1.0.13"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "prop-types": "^15.6.2",
@@ -15,6 +20,8 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "pre-deploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

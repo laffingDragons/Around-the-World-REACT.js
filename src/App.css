@@ -74,20 +74,19 @@
 
 @media only screen and (max-width: 766px) {
   .card2 {
-    background: #fff;
-    border-radius: 2px;
-    display: inline-block;
-    margin: 1rem;
-    position: relative;
-    width: 100%;
     height: auto;
-    color: #222222;
-    text-align: center;
-    font-size: 0.8em;
-    cursor: pointer;
   }
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+
+
+@keyframes gradient { 
+  0%{background-position:0 0}
+  100%{background-position:100% 0}
+}
+

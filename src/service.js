@@ -22,7 +22,13 @@ export const allRegions = [
 ]
 
 // api to get all 
+export const fetchAll = `https://restcountries.eu/rest/v2/all`
+
 export const fetchCountries = `https://restcountries.eu/rest/v2/region/`;
+
+export const fetchLanguages = `https://restcountries.eu/rest/v2/lang/`;
+
+export const fetchCurrency = `https://restcountries.eu/rest/v2/currency/`;
 
 export const CURRENT_COUNTRY = 'CURRENT_COUNTRY';
 
