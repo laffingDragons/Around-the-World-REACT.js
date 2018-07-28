@@ -35,17 +35,19 @@ class Region extends Component {
 
             console.log(this.props,'<><><><>', currency);
 
-        if(countryName){
+        if(currency){
 
-            axios.get(`${fetchCountries}${countryName}`)
-                .then(res => {
-                    let data = res.data;
-                    this.setState({ countries: data })
-                })
-                .catch(rej => {
-                    console.log('Problem with http request in fetching Countries :', rej);
-                })
-                this.setState({ countryName: countryName});
+            axios.get(`${fetchCurrency}${language}`)
+            .then(res => {
+                let data = res.data;
+                this.setState({ countries: data })
+            })
+            .catch(rej => {
+                console.log('Problem with http request in fetching Curreny :', rej);
+            })
+            this.setState({ currency: currency})
+    
+           
         }else if(language){
             
             axios.get(`${fetchLanguages}${language}`)
@@ -59,15 +61,16 @@ class Region extends Component {
                 this.setState({ language: language});
         }else{
 
-            axios.get(`${fetchCurrency}${language}`)
-                .then(res => {
-                    let data = res.data;
-                    this.setState({ countries: data })
-                })
-                .catch(rej => {
-                    console.log('Problem with http request in fetching Curreny :', rej);
-                })
-                this.setState({ currency: currency})
+
+            axios.get(`${fetchCountries}${countryName}`)
+            .then(res => {
+                let data = res.data;
+                this.setState({ countries: data })
+            })
+            .catch(rej => {
+                console.log('Problem with http request in fetching Countries :', rej);
+            })
+            this.setState({ countryName: countryName});
         }
             
     }
