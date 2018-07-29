@@ -22,34 +22,36 @@ class Region extends Component {
         super(props)
         this.state = {
             countries: [],
-            searchValue:'',
-            language:'',
-            currency:''
+            searchValue: '',
+            language: '',
+            currency: ''
         }
         this.onBack = this.onBack.bind(this);
     }
 
     componentDidMount() {
 
-        const { countryName, language , currency } = this.props;
+        const { countryName, language, currency } = this.props;
 
-            console.log(this.props,'<><><><>', currency);
 
-        if(currency){
+        if (currency) {
+            console.log('Cuurency was callled', currency);
 
-            axios.get(`${fetchCurrency}${language}`)
-            .then(res => {
-                let data = res.data;
-                this.setState({ countries: data })
-            })
-            .catch(rej => {
-                console.log('Problem with http request in fetching Curreny :', rej);
-            })
-            this.setState({ currency: currency})
-    
-           
-        }else if(language){
-            
+            axios.get(`${fetchCurrency}${currency}`)
+                .then(res => {
+                    let data = res.data;
+                    this.setState({ countries: data })
+                })
+                .catch(rej => {
+                    console.log('Problem with http request in fetching Curreny :', rej);
+                })
+            this.setState({ currency: currency })
+
+
+        } else if (language) {
+
+            console.log('language was callled', language);
+
             axios.get(`${fetchLanguages}${language}`)
                 .then(res => {
                     let data = res.data;
@@ -58,21 +60,23 @@ class Region extends Component {
                 .catch(rej => {
                     console.log('Problem with http request in fetching Language :', rej);
                 })
-                this.setState({ language: language});
-        }else{
+            this.setState({ language: language });
 
+        } else {
+            
+            console.log('Country was callled', countryName);
 
             axios.get(`${fetchCountries}${countryName}`)
-            .then(res => {
-                let data = res.data;
-                this.setState({ countries: data })
-            })
-            .catch(rej => {
-                console.log('Problem with http request in fetching Countries :', rej);
-            })
-            this.setState({ countryName: countryName});
+                .then(res => {
+                    let data = res.data;
+                    this.setState({ countries: data })
+                })
+                .catch(rej => {
+                    console.log('Problem with http request in fetching Countries :', rej);
+                })
+            this.setState({ countryName: countryName });
         }
-            
+
     }
 
     onBack(index) {
@@ -89,23 +93,23 @@ class Region extends Component {
 
     }
 
-    onChangeValue(e){
+    onChangeValue(e) {
 
-        const{searchValue} = this.state;
+        const { searchValue } = this.state;
         this.setState({ searchValue: e.target.value })
 
     }
 
     render() {
         let { countries, searchValue } = this.state;
-        
+
         return (
             <div>
                 <div className="row justify-content-center">
                     <div className="col-6">
-                    <div className="webflow-style-input">
-                        <input className="" type="text" placeholder="Search..." onChange={this.onChangeValue.bind(this)}></input>
-                    </div>
+                        <div className="webflow-style-input">
+                            <input className="" type="text" placeholder="Search..." onChange={this.onChangeValue.bind(this)}></input>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -117,12 +121,12 @@ class Region extends Component {
                         countries.map((x, index) => {
                             return (
                                 <div key={index} onClick={() => this.countryInfo(x, 3)} className="col-md-4" style={
-                                    x.name.toLowerCase().indexOf(searchValue) !== -1 
-                                    ?
-                                    { display: 'block'}
-                                    :
-                                    { display : 'none'}   
-                                 }>
+                                    x.name.toLowerCase().indexOf(searchValue) !== -1
+                                        ?
+                                        { display: 'block' }
+                                        :
+                                        { display: 'none' }
+                                }>
 
                                     <div className="card2 card-glow" >
                                         <img src={x.flag} alt="" width="100%" height="auto" />
@@ -168,7 +172,7 @@ class Region extends Component {
 
 const mapStateToProps = state => ({
     info: state.appReducer.countryInfo,
-    name: state.appReducer.region      
+    name: state.appReducer.region
 })
 
 export default connect(mapStateToProps, { pushCountryData })(Region)

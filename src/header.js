@@ -120,7 +120,6 @@ class Header extends Component {
   onSelectCurrency(event){
     let { headerTitle} = this.state;
     let { param } = this.props;
-    console.log("OOOOOo", event.target.value);
     
     this.setState({ currency:event.target.value, currentPageIndex: 1, headerTitle: 'Currency' });
 
@@ -130,11 +129,12 @@ class Header extends Component {
     let { countryName, currentPageIndex, headerTitle, uniqueLangCode, uniqueCurrencyCode, language, currency } = this.state;
     return (
       <Provider store={store}>
-        <div className="App" >
+        <div className="MainContainer" >
+        <div class="ParallaxContainer">
           <div className="container">
-            {/* <div className="row" style={{ paddingTop:"50px"}}>
+          <div className="row" style={{ paddingTop:"50px"}}>
               <div className="col-md-3">
-                <div className="webflow-style-input">
+                <div className="webflow-style-input" style={{  marginBottom:'10px'}}>
                   <select className="select-style" onChange={this.onSelectLanguage}  >
                   <option value="" disabled selected>Languages</option>
                    {
@@ -156,13 +156,19 @@ class Header extends Component {
                    }
                   </select>
                 </div></div>
-            </div> */}
+            </div>
             <div className="row">
               <div className="App-header">
                 <h1 className="App-title header-title">{headerTitle}</h1>
                 <img src={logo} className="App-logo" alt="logo" />
               </div>
             </div>
+          </div>
+          </div>
+          <div className="ContentContainer">
+          <div className="container">
+          
+            
             {
               currentPageIndex == 1
                 ?
@@ -190,6 +196,7 @@ class Header extends Component {
 
             }
 
+          </div>
           </div>
         </div>
       </Provider>

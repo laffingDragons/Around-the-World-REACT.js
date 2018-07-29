@@ -90,3 +90,27 @@
   100%{background-position:100% 0}
 }
 
+.MainContainer {
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.ParallaxContainer {
+  display: flex;
+  flex: 1 0 auto;
+  position: relative;
+  height: 100vh;
+  transform: translateZ(-1px) scale(2);
+  z-index: -1;
+  background:url('./background.jpg');
+}
+
+.ContentContainer {
+  display: block;
+  position: relative;
+  background-color: transparent;
+  z-index: 1;
+}
