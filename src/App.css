@@ -25,14 +25,17 @@
 }
 
 .card {
-  background: #fff;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
   border-radius: 2px;
   display: block;
   margin-bottom: 30px;
   position: relative;
   width: 100%;
   height: 200px;
-  color: #222222;
+  color: white;
+  background-color: #222222 !important;
   text-align: center;
   font-size: 1.8em;
   cursor: pointer;

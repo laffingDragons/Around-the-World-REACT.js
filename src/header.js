@@ -183,7 +183,7 @@ class Header extends Component {
                       allRegions.map((x, i) => {
 
                         return (
-                          <div key={i} className="col-md-6">
+                          <div key={i} className="col-md-4">
                             <div  onClick={() => this.param(x.name, 1)} className="card card-glow">
                               <p style={{ verticalAlign: 'middle' }}></p> {x.name}
                             </div>
