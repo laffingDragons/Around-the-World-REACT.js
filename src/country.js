@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import './country.css'
 
 const propTypes = {
+
     countryName: PropTypes.String,
     param: PropTypes.func,
     appAction: PropTypes.object
@@ -50,7 +51,7 @@ class Country extends Component {
                             {
                                 this.props.info.timezones.map((y, i) => {
                                     return (
-                                        <div style={{ display: 'inline' }}>                                    {
+                                        <div key={i} style={{ display: 'inline' }}>                                    {
                                             i === this.props.info.timezones.length - 1
                                                 ?
                                                 <div style={{ display: 'inline' }}>
@@ -72,7 +73,7 @@ class Country extends Component {
                             <b style={{ display: 'block' }}>BORDERS:</b>  {
                                 this.props.info.borders.map((y, i) => {
                                     return (
-                                        <div style={{ display: 'inline' }}>                                    {
+                                        <div key={i} style={{ display: 'inline' }}>                                    {
                                             i === this.props.info.borders.length - 1
                                                 ?
                                                 <div style={{ display: 'inline' }}>
@@ -96,7 +97,7 @@ class Country extends Component {
                             {
                                 this.props.info.languages.map((y, i) => {
                                     return (
-                                        <div style={{ display: 'inline' }}>                                    {
+                                        <div key={i} style={{ display: 'inline' }}>                                    {
                                             i === this.props.info.languages.length - 1
                                                 ?
                                                 <div style={{ display: 'inline' }}>
@@ -120,7 +121,7 @@ class Country extends Component {
                             {
                                 this.props.info.currencies.map((y, i) => {
                                     return (
-                                        <div style={{ display: 'inline' }}>                                    {
+                                        <div  key={i} style={{ display: 'inline' }}>                                    {
                                             i === this.props.info.currencies.length - 1
                                                 ?
                                                 <div style={{ display: 'inline' }}>
@@ -145,6 +146,7 @@ class Country extends Component {
     }
 }
 
+// getting data from store
 const mapStateToProps = state => ({
     info: state.appReducer.countryInfo,
     name: state.appReducer.region

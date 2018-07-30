@@ -23,19 +23,30 @@ class Region extends Component {
         this.state = {
             countries: [],
             searchValue: '',
-            language: '',
-            currency: ''
+            currentHeadTitle:''
         }
         this.onBack = this.onBack.bind(this);
-    }
+        this.makeDataRequest = this.makeDataRequest.bind(this);
+        }
 
     componentDidMount() {
 
-        const { countryName, language, currency } = this.props;
+        let { countryName, language, currency } = this.props;
+        this.makeDataRequest(countryName,language,currency)
 
+    }
+
+    // this life cycle hook is used to mutate values and make page reactive
+    componentWillReceiveProps(nextProps){
+
+        let { countryName, language, currency } = nextProps;
+        this.makeDataRequest(countryName,language,currency)
+
+    }
+
+    makeDataRequest(countryName, language,currency){
 
         if (currency) {
-            console.log('Cuurency was callled', currency);
 
             axios.get(`${fetchCurrency}${currency}`)
                 .then(res => {
@@ -45,12 +56,10 @@ class Region extends Component {
                 .catch(rej => {
                     console.log('Problem with http request in fetching Curreny :', rej);
                 })
-            this.setState({ currency: currency })
+            this.setState({ currency: currency , currentHeadTitle:'Currency'})
 
 
         } else if (language) {
-
-            console.log('language was callled', language);
 
             axios.get(`${fetchLanguages}${language}`)
                 .then(res => {
@@ -60,12 +69,10 @@ class Region extends Component {
                 .catch(rej => {
                     console.log('Problem with http request in fetching Language :', rej);
                 })
-            this.setState({ language: language });
+            this.setState({ language: language , currentHeadTitle:'Language'});
 
         } else {
             
-            console.log('Country was callled', countryName);
-
             axios.get(`${fetchCountries}${countryName}`)
                 .then(res => {
                     let data = res.data;
@@ -74,22 +81,26 @@ class Region extends Component {
                 .catch(rej => {
                     console.log('Problem with http request in fetching Countries :', rej);
                 })
-            this.setState({ countryName: countryName });
+            this.setState({ countryName: countryName, currentHeadTitle: countryName });
         }
 
     }
 
-    onBack(index) {
-        const { param, countryName } = this.props;
-        param('around the', index)
+    onBack() {
+
+        const { param } = this.props;
+        param('around the', 0);
+
     }
 
     // function to get value from last component and render countries according to region
     countryInfo(info, index) {
 
+        let { currentHeadTitle } = this.state;
+
         let { param } = this.props;
         this.props.pushCountryData(info)
-        param(info.name, index);
+        param(currentHeadTitle, index);
 
     }
 
@@ -113,7 +124,7 @@ class Region extends Component {
                     </div>
                 </div>
                 <div>
-                    <i onClick={() => this.onBack(0)} className="fas fa-arrow-alt-circle-left fa-2x" style={{ color: "#61DAFB" }}></i>
+                    <i onClick={() => this.onBack()} className="fas fa-arrow-alt-circle-left fa-2x" style={{ color: "#61DAFB", cursor:'pointer' }}></i>
                 </div>
                 <br />
                 <div className="row">
@@ -129,16 +140,16 @@ class Region extends Component {
                                 }>
 
                                     <div className="card2 card-glow" >
-                                        <img src={x.flag} alt="" width="100%" height="auto" />
+                                        <img className='underline1' src={x.flag} alt="" width="100%" height="auto" />
                                         <h3 className="overFlow">{x.name}</h3>
-                                        <hr />
+                                        <hr className='underline'/>
                                         <p>{x.capital} is Capital </p>
                                         <p>{x.population} people stays here</p>
                                         Currencies :
                                         {
                                             x.currencies.map((y, i) => {
                                                 return (
-                                                    <div>                                    {
+                                                    <div key={i}>                                    {
                                                         i === x.currencies.length - 1
                                                             ?
                                                             <div>

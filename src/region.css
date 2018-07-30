@@ -58,3 +58,35 @@
   transition: color .25s;
   
 }
+
+.underline:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom:0px;
+  z-index: 999;
+  height: 3px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-position: 0% 0%;
+  background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
+  background-size: 500% auto;
+  animation: gradient 3s linear infinite;
+}
+
+.underline1:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  /* bottom:0px; */
+  z-index: 999;
+  height: 3px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-position: 0% 0%;
+  background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
+  background-size: 500% auto;
+  animation: gradient 3s linear infinite;
+}
