@@ -31,7 +31,7 @@ class Country extends Component {
         return (
             <div>
                 <div>
-                    <i onClick={() => this.onBack(1)} className="fas fa-arrow-alt-circle-left fa-2x" style={{ color: "#61DAFB" }}></i>
+                    <i onClick={() => this.onBack(1)} className="fas fa-arrow-alt-circle-left fa-2x" style={{ color: "#61DAFB", cursor:'pointer'}}></i>
                 </div>
                 <br />
                 <div className="container country-info-card" style={{ marginBottom: '25px' }}>

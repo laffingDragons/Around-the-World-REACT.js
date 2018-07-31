@@ -43,6 +43,7 @@
     padding: 1.25rem;
     font-size:large;
     color: #222222;
+    cursor: default;
 }
 
 .text-center {

@@ -155,7 +155,7 @@ class Header extends Component {
               <div className="row" style={{ paddingTop: "50px" }}>
                 <div className="col-md-3">
                   <div className="webflow-style-input" style={{ marginBottom: '10px' }}>
-                    <select className="select-style" onChange={this.onSelectLanguage}  >
+                    <select className="select-style" onChange={this.onSelectLanguage} style={{  cursor:'pointer'}} >
                       <option value="" disabled selected>Languages</option>
                       {
                         uniqueLangCode.map((x, i) => {
@@ -166,7 +166,7 @@ class Header extends Component {
                   </div> </div>
                 <div className="offset-md-6 col-md-3">
                   <div className="webflow-style-input">
-                    <select className="select-style" onChange={this.onSelectCurrency}>
+                    <select className="select-style" onChange={this.onSelectCurrency} style={{  cursor:'pointer'}}>
                       <option value="" disabled selected>Currencies</option>
                       {
                         uniqueCurrencyCode.map((x, i) => {
