@@ -152,7 +152,7 @@ class Header extends Component {
         <div className="MainContainer" >
           <div className="ParallaxContainer">
             <div className="container">
-              <div className="row" style={{ paddingTop: "50px" }}>
+              <div className="row" style={{ paddingTop: "49px"}}>
                 <div className="col-md-3">
                   <div className="webflow-style-input" style={{ marginBottom: '10px' }}>
                     <select className="select-style" onChange={this.onSelectLanguage} style={{  cursor:'pointer'}} >
